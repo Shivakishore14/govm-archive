@@ -12,7 +12,6 @@ var installCmd = &cobra.Command{
 	Short: "Install a golang version",
 	Long:  `Installs Go given the version to be installed`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
 		remoteVersions := engine.RemoteList()
 		version := domain.Version{}
 		for _, x := range remoteVersions {

@@ -11,7 +11,6 @@ var lsCmd = &cobra.Command{
 	Short: "Display the versions installed",
 	Long:  `Display all the versions of Go installed`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
 		remoteVersions := engine.LocalList()
 		//log.Println(remoteVersions)
 		for _, x := range remoteVersions {

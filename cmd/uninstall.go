@@ -11,7 +11,6 @@ var uninstallCmd = &cobra.Command{
 	Short: "Uninstall a golang version",
 	Long:  `Uninstalls Go given the version given`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
 		if len(args) == 0 {
 			log.Println("please pecify a version to uninstall")
 			return

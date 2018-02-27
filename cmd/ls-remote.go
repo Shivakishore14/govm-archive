@@ -11,7 +11,6 @@ var lsRemoteCmd = &cobra.Command{
 	Short: "Display all the versions available",
 	Long:  `Display all the versions of Go available for download`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
 		remoteVersions := engine.RemoteList()
 		//log.Println(remoteVersions)
 		for _, x := range remoteVersions {

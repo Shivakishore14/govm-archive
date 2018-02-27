@@ -23,7 +23,6 @@ func Download(v domain.Version) error {
 }
 
 func DownloadFile(v domain.Version, config domain.Config) error {
-
 	// Create the file, but give it a tmp file extension, this means we won't overwrite a
 	// file until it's downloaded, but we'll remove the tmp extension once downloaded.
 	if err := os.MkdirAll(config.TempDir, os.ModePerm); err != nil {

@@ -11,7 +11,6 @@ var rootCmd = &cobra.Command{
 	Short: "Govm is a version manager for golang",
 	Long:  `Govm is a Fast and Flexible Go Version Manager built with go`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
 		fmt.Println(args)
 	},
 }
