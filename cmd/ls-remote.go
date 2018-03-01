@@ -3,7 +3,7 @@ package cmd
 import (
 	"github.com/shivakishore14/govm/engine"
 	"github.com/spf13/cobra"
-	"log"
+	"fmt"
 )
 
 var lsRemoteCmd = &cobra.Command{
@@ -12,9 +12,9 @@ var lsRemoteCmd = &cobra.Command{
 	Long:  `Display all the versions of Go available for download`,
 	Run: func(cmd *cobra.Command, args []string) {
 		remoteVersions := engine.RemoteList()
-		//log.Println(remoteVersions)
+		//fmt.Println(remoteVersions)
 		for _, x := range remoteVersions {
-			log.Println(x.Name, x.DownloadLink)
+			fmt.Println(x.Name, x.DownloadLink)
 		}
 	},
 }
