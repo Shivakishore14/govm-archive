@@ -9,7 +9,7 @@ import (
 
 func Path(name string) string{
 	config := utils.LoadConf()
-	versionPath := filepath.Join(config.InstallationDir, name, "go/bin")
+	versionPath := filepath.Join(config.InstallationDir, name, "go")
 
 	if _, err := os.Stat(versionPath); os.IsNotExist(err) {
 		log.Println("Version not found")
