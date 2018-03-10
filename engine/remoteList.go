@@ -6,8 +6,7 @@ import (
 	"log"
 )
 
-var URL = "http://localhost:8000"
-var OS = "macOS"
+var URL = "https://golang.org/dl/"
 
 func RemoteList(os string, arch string) domain.Versions {
 	doc, err := goquery.NewDocument(URL)

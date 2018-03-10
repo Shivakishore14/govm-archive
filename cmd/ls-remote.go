@@ -17,13 +17,13 @@ var lsRemoteCmd = &cobra.Command{
 		fmt.Println(hostOs, hostArch)
 
 		if hostOs == "" || hostArch == "" {
-			fmt.Println("please check configuration")
+			fmt.Println("please check configuration \n run `govm configure`")
 		}
 
 		remoteVersions := engine.RemoteList(hostOs, hostArch)
 		//fmt.Println(remoteVersions)
 		for _, x := range remoteVersions {
-			fmt.Println(x.Name, x.DownloadLink)
+			fmt.Println(x.Name)
 		}
 	},
 }

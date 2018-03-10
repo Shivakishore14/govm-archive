@@ -4,6 +4,7 @@ import (
 	"github.com/shivakishore14/govm/engine"
 	"github.com/spf13/cobra"
 	"fmt"
+	"strings"
 )
 
 var uninstallCmd = &cobra.Command{
@@ -15,7 +16,11 @@ var uninstallCmd = &cobra.Command{
 			fmt.Println("please pecify a version to uninstall")
 			return
 		}
-		if err := engine.Uninstall(args[0]); err != nil {
+		version := args[0]
+		if !strings.HasPrefix(version, "go") {
+			version = "go" + version
+		}
+		if err := engine.Uninstall(version); err != nil {
 			fmt.Println(err)
 			return
 		}

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/shivakishore14/govm/engine"
 	"github.com/spf13/cobra"
+	"strings"
 )
 
 var pathCmd = &cobra.Command{
@@ -14,7 +15,11 @@ var pathCmd = &cobra.Command{
 		if len(args) == 0 {
 			fmt.Println("loading .govmrc")
 		} else {
-			path := engine.Path(args[0])
+			version := args[0]
+			if !strings.HasPrefix(version, "go") {
+				version = "go" + version
+			}
+			path := engine.Path(version)
 			fmt.Println(path)
 		}
 	},

@@ -6,6 +6,7 @@ import (
 	"github.com/shivakishore14/govm/engine"
 	"github.com/spf13/cobra"
 	"os"
+	"strings"
 )
 
 var installCmd = &cobra.Command{
@@ -21,8 +22,13 @@ var installCmd = &cobra.Command{
 		}
 		remoteVersions := engine.RemoteList(hostOs, hostArch)
 		version := domain.Version{}
+
+		versionName := args[0]
+		if !strings.HasPrefix(versionName, "go") {
+			versionName = "go" + versionName
+		}
 		for _, x := range remoteVersions {
-			if args[0] == x.Name {
+			if versionName == x.Name {
 				version = x
 			}
 		}
