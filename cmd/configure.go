@@ -5,6 +5,7 @@ import (
 	"github.com/spf13/cobra"
 	"log"
 )
+
 var configureCmd = &cobra.Command{
 	Use:   "configure",
 	Short: "configure Govm",

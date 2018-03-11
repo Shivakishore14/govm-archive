@@ -10,7 +10,7 @@ import (
 func LoadConf() domain.Config {
 	usr, err := user.Current()
 	if err != nil {
-		log.Fatal( err )
+		log.Fatal(err)
 	}
 	userHome := usr.HomeDir
 	govmHome := filepath.Join(userHome, ".govm/")

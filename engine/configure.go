@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"github.com/pkg/errors"
 	"html/template"
-	"log"
 	"os"
 	"os/user"
 	"path/filepath"
 	"runtime"
 )
+
 var scriptBash = `
 govm() {
     export GOVMOS="{{.Os}}"
@@ -32,16 +32,16 @@ govm() {
 }
 `
 
-func Configure() error{
+func Configure() error {
 	usr, err := user.Current()
 	if err != nil {
 		return errors.Wrap(err, "error getting user")
 	}
 	data := struct {
-		Os string
+		Os   string
 		Arch string
 	}{
-		Os: runtime.GOOS,
+		Os:   runtime.GOOS,
 		Arch: runtime.GOARCH,
 	}
 	bashFilename := ".bash_profile"
@@ -53,7 +53,6 @@ func Configure() error{
 	bashrcFile := filepath.Join(userHome, bashFilename)
 	scriptPath := filepath.Join(govmHome, "wrapper.sh")
 	sourceCommand := "source " + scriptPath
-
 
 	fmt.Printf("HomeDir for Govm  [ %s ] \n", govmHome)
 
@@ -76,7 +75,7 @@ func Configure() error{
 	}
 
 	// Update .bashrc
-	if _, err := os.Stat(bashrcFile) ; err != nil {
+	if _, err := os.Stat(bashrcFile); err != nil {
 		if os.IsNotExist(err) {
 			os.Create(bashrcFile)
 		}

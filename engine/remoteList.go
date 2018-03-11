@@ -49,18 +49,22 @@ func getFileByConf(tableSelection *goquery.Selection, os string, arch string) do
 	return version
 }
 
-func getRemoteOs(hostOs string) string{
+func getRemoteOs(hostOs string) string {
 	switch hostOs {
-	case "darwin": return "macOS"
-	case "linux": return "Linux"
-	case "windows": return "Windows"
+	case "darwin":
+		return "macOS"
+	case "linux":
+		return "Linux"
+	case "windows":
+		return "Windows"
 	}
 	return ""
 }
 
 func getRemoteArch(hostArch string) string {
 	switch hostArch {
-	case "amd64":return "x86-64"
+	case "amd64":
+		return "x86-64"
 	}
 	return "x86"
 }

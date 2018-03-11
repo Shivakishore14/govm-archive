@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 )
 
-func Path(name string) string{
+func Path(name string) string {
 	config := utils.LoadConf()
 	versionPath := filepath.Join(config.InstallationDir, name, "go")
 
