@@ -1,14 +1,15 @@
 package engine
 
 import (
-	"github.com/shivakishore14/govm/utils"
+	"github.com/shivakishore14/govm/domain"
 	"log"
 	"os"
 	"path/filepath"
 )
 
 func Path(name string) string {
-	config := utils.LoadConf()
+	config := domain.Config{}
+	config.LoadConf()
 	versionPath := filepath.Join(config.InstallationDir, name, "go")
 
 	if _, err := os.Stat(versionPath); os.IsNotExist(err) {

@@ -2,14 +2,14 @@ package engine
 
 import (
 	"github.com/shivakishore14/govm/domain"
-	"github.com/shivakishore14/govm/utils"
 	"io/ioutil"
 	"log"
 	"strings"
 )
 
 func LocalList() domain.Versions {
-	config := utils.LoadConf()
+	config := domain.Config{}
+	config.LoadConf()
 	files, err := ioutil.ReadDir(config.InstallationDir)
 	if err != nil {
 		log.Fatal(err)

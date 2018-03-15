@@ -3,10 +3,9 @@ package engine
 import (
 	"fmt"
 	"github.com/pkg/errors"
+	"github.com/shivakishore14/govm/domain"
 	"html/template"
 	"os"
-	"os/user"
-	"path/filepath"
 	"runtime"
 )
 
@@ -33,10 +32,6 @@ govm() {
 `
 
 func Configure() error {
-	usr, err := user.Current()
-	if err != nil {
-		return errors.Wrap(err, "error getting user")
-	}
 	data := struct {
 		Os   string
 		Arch string
@@ -44,24 +39,13 @@ func Configure() error {
 		Os:   runtime.GOOS,
 		Arch: runtime.GOARCH,
 	}
-	bashFilename := ".bash_profile"
-	if data.Os == "linux" {
-		bashFilename = ".bashrc"
-	}
-	userHome := usr.HomeDir
-	govmHome := filepath.Join(userHome, ".govm/")
-	bashrcFile := filepath.Join(userHome, bashFilename)
-	scriptPath := filepath.Join(govmHome, "wrapper.sh")
-	sourceCommand := "source " + scriptPath
+	config := &domain.Config{}
+	config.LoadConf()
 
-	fmt.Printf("HomeDir for Govm  [ %s ] \n", govmHome)
+	fmt.Printf("HomeDir for Govm  [ %s ] \n", config.GovmHome)
+	sourceCommand := "source " + config.ScriptPath
 
-	//var input string
-	//fmt.Scanln(&input)
-	//if input == "" {
-	//	fmt.Println("Create config files")
-	//}
-	scriptFile, err := os.Create(scriptPath)
+	scriptFile, err := os.Create(config.ScriptPath)
 	if err != nil {
 		return errors.Wrap(err, "error creating script file")
 	}
@@ -75,12 +59,12 @@ func Configure() error {
 	}
 
 	// Update .bashrc
-	if _, err := os.Stat(bashrcFile); err != nil {
+	if _, err := os.Stat(config.BashrcPath); err != nil {
 		if os.IsNotExist(err) {
-			os.Create(bashrcFile)
+			os.Create(config.BashrcPath)
 		}
 	}
-	f, err := os.OpenFile(bashrcFile, os.O_APPEND|os.O_WRONLY, 0600)
+	f, err := os.OpenFile(config.BashrcPath, os.O_APPEND|os.O_WRONLY, 0600)
 	if err != nil {
 		return errors.Wrap(err, "error opening bashrc file")
 	}

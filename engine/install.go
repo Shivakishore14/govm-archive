@@ -5,7 +5,6 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/mholt/archiver"
 	"github.com/shivakishore14/govm/domain"
-	"github.com/shivakishore14/govm/utils"
 	"io"
 	"net/http"
 	"os"
@@ -18,7 +17,8 @@ func Install(v domain.Version) error {
 }
 
 func Download(v domain.Version) error {
-	conf := utils.LoadConf()
+	conf := domain.Config{}
+	conf.LoadConf()
 	return DownloadFile(v, conf)
 }
 

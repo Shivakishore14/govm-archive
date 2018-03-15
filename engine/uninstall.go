@@ -1,13 +1,14 @@
 package engine
 
 import (
-	"github.com/shivakishore14/govm/utils"
+	"github.com/shivakishore14/govm/domain"
 	"os"
 	"path/filepath"
 )
 
 func Uninstall(versionName string) error {
-	config := utils.LoadConf()
+	config := domain.Config{}
+	config.LoadConf()
 	installedPath := filepath.Join(config.InstallationDir, versionName)
 	if _, err := os.Stat(installedPath); err != nil {
 		return err
