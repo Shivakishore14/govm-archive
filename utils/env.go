@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-var ErrorEnvNotSet = errors.New("Env variable not found")
+var ErrorEnvNotSet = errors.New("env variable not found")
 
 func GetEnv(key string) (string, error) {
 	value := os.Getenv(key)

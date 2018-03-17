@@ -1,5 +1,7 @@
 package domain
 
+import "errors"
+
 type Version struct {
 	Name         string
 	FileName     string
@@ -11,10 +13,11 @@ type Version struct {
 	DownloadLink string
 }
 type Versions []Version
-
 func (v Version) IsEmpty() bool {
 	if v.Name != "" && v.Size != "" && v.DownloadLink != "" {
 		return false
 	}
 	return true
 }
+
+var ErrVersionNotFound = errors.New("version not found")
