@@ -39,3 +39,8 @@ govm use 1.10
 ```
 govm uninstall 1.10
 ```
+
+# Execute a command with specific version
+```
+govm exec 1.10 go env
+```

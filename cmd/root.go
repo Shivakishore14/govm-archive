@@ -26,6 +26,7 @@ func init() {
 	rootCmd.AddCommand(lsCmd)
 	rootCmd.AddCommand(useCmd)
 	rootCmd.AddCommand(pathCmd)
+	rootCmd.AddCommand(execCmd)
 	rootCmd.AddCommand(installCmd)
 	rootCmd.AddCommand(lsRemoteCmd)
 	rootCmd.AddCommand(uninstallCmd)

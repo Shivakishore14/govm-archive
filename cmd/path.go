@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/shivakishore14/govm/engine"
 	"github.com/spf13/cobra"
+	"log"
 	"strings"
 )
 
@@ -19,8 +20,11 @@ var pathCmd = &cobra.Command{
 			if !strings.HasPrefix(version, "go") {
 				version = "go" + version
 			}
-			path := engine.Path(version)
-			fmt.Println(path)
+			path, err := engine.Path(version)
+			if err != nil {
+				log.Panicln(err)
+			}
+			fmt.Println("PATH:" +path)
 		}
 	},
 }
