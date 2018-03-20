@@ -11,7 +11,7 @@ func Uninstall(versionName string) error {
 	config.LoadConf()
 	installedPath := filepath.Join(config.InstallationDir, versionName)
 	if _, err := os.Stat(installedPath); err != nil {
-		return err
+		return domain.ErrVersionNotFound
 	}
 	return os.RemoveAll(installedPath)
 }
