@@ -16,7 +16,6 @@ var installCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		hostOs := os.Getenv("GOVMOS")
 		hostArch := os.Getenv("GOVMARCH")
-		fmt.Println(hostOs, hostArch)
 		if hostOs == "" || hostArch == "" {
 			fmt.Println("please check configuration \n run `govm configure`")
 			return
@@ -33,7 +32,8 @@ var installCmd = &cobra.Command{
 				version = x
 			}
 		}
-		e := engine.Download(version)
-		fmt.Println(e)
+		if e := engine.Download(version); e != nil {
+			fmt.Println(e)
+		}
 	},
 }

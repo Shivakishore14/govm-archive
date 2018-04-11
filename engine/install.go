@@ -40,7 +40,6 @@ func DownloadFile(v domain.Version, config domain.Config) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(resp.ContentLength)
 	defer resp.Body.Close()
 	fmt.Printf("Downloading : %s \n", v.Size)
 	// Create our progress reporter and pass it to be used alongside our writer
@@ -52,7 +51,7 @@ func DownloadFile(v domain.Version, config domain.Config) error {
 
 	// The progress use the same line so print a new line once it's finished downloading
 	fmt.Printf("\r%s", strings.Repeat(" ", 35))
-	fmt.Print("\r Download complete \n")
+	fmt.Print("\rDownload complete")
 
 	err = os.Rename(filePath+".tmp", filePath)
 	if err != nil {
@@ -62,7 +61,7 @@ func DownloadFile(v domain.Version, config domain.Config) error {
 	if err := os.MkdirAll(installPath, os.ModePerm); err != nil {
 		return err
 	}
-	fmt.Println("Extracting")
+	fmt.Println("\rExtracting \n")
 	err = archiver.TarGz.Open(filePath, installPath)
 
 	return err
