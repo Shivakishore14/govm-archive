@@ -18,7 +18,8 @@ var installCmd = &cobra.Command{
 		hostArch := os.Getenv("GOVMARCH")
 		fmt.Println(hostOs, hostArch)
 		if hostOs == "" || hostArch == "" {
-			fmt.Println("please check configuration")
+			fmt.Println("please check configuration \n run `govm configure`")
+			return
 		}
 		remoteVersions := engine.RemoteList(hostOs, hostArch)
 		version := domain.Version{}

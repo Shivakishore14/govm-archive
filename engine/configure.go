@@ -7,7 +7,6 @@ import (
 	"github.com/shivakishore14/govm/domain"
 	"github.com/shivakishore14/govm/utils"
 	"html/template"
-	"log"
 	"os"
 	"runtime"
 	"strings"

@@ -18,6 +18,7 @@ var lsRemoteCmd = &cobra.Command{
 
 		if hostOs == "" || hostArch == "" {
 			fmt.Println("please check configuration \n run `govm configure`")
+			return
 		}
 
 		remoteVersions := engine.RemoteList(hostOs, hostArch)

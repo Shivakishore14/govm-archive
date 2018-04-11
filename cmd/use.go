@@ -12,7 +12,6 @@ var useCmd = &cobra.Command{
 	Short: "Lets you switch to another go version",
 	Long:  `Use command lets you switch between multiple go versions.`,
 	Run: func(cmd *cobra.Command, args []string) {
-
-		fmt.Println("Please check your installation")
+		fmt.Println("please check configuration \n run `govm configure`")
 	},
 }
