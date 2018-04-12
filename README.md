@@ -1,4 +1,7 @@
-# Govm [ WIP ]
+# Govm [ Archive ]
+
+## please find the new repo at (golang-vm/govm)[https://github.com/golang-vm/govm]
+
 Govm is a fast and flexible version manager for Go built with Go.
 
 Govm lets you work with multiple versions of Go, actively.
